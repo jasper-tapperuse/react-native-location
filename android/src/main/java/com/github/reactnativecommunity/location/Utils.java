@@ -2,6 +2,8 @@ package com.github.reactnativecommunity.location;
 
 import android.location.Location;
 import android.os.Build;
+import android.content.Context;
+import android.app.Activity;
 import android.support.annotation.Nullable;
 
 import com.facebook.react.bridge.Arguments;
@@ -60,5 +62,9 @@ public class Utils {
         } catch (ClassNotFoundException e) {
             return false;
         }
+    }
+
+    public static Context availableContext(Activity activity, Context context) {
+        return (activity != null)? activity : context;
     }
 }

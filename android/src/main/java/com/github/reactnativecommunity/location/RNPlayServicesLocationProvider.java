@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.content.Context;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -44,10 +45,12 @@ public class RNPlayServicesLocationProvider implements RNLocationProvider {
     private ReadableMap pendingConfigureOptions = null;
     private Promise pendingConfigurePromise = null;
 
-    public RNPlayServicesLocationProvider(Activity activity, ReactApplicationContext context) {
+    public RNPlayServicesLocationProvider(final Activity activity, final ReactApplicationContext context) {
         this.context = context;
-        locationProvider = LocationServices.getFusedLocationProviderClient(activity);
-        locationSettingsClient = LocationServices.getSettingsClient(activity);
+        
+        Context availableContext = Utils.availableContext(activity, context);
+        locationProvider = LocationServices.getFusedLocationProviderClient(availableContext);
+        locationSettingsClient = LocationServices.getSettingsClient(availableContext);
     }
 
     // Public interface
