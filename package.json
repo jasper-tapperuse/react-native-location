@@ -34,6 +34,7 @@
     "start:android": "adb shell am start -n com.example/.MainActivity",
     "clean": "rimraf dist/ docs/ coverage/",
     "prepare": "npm run clean && npm run build",
+    "prepublish": "npm run build",
     "prepublishOnly": "npm run validate-ts-declarations && npm run validate-flow-declarations"
   },
   "peerDependencies": {
