@@ -173,6 +173,8 @@ public class RNPlayServicesLocationProvider implements RNLocationProvider {
                         resolvable.startResolutionForResult(activity, REQUEST_CHECK_SETTINGS);
                     } catch (IntentSender.SendIntentException sendEx) {
                         // Ignore the error.
+                    } catch (Exception error) {
+                        // Ignore the error.
                     }
                 } else {
                     // Reject the promise with an error
